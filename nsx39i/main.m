@@ -82,7 +82,6 @@ void sendNote(MIDIEndpointRef endPoint, Byte *message, UInt16 length)
 int main(int argc, char **argv)
 {
     int result, mode = 0;
-    unsigned int param_buf;
     Byte read_data;
     char read_buf[3], *read_param;
     Byte send_data[256];
