@@ -123,6 +123,8 @@ int main(int argc, char **argv)
                         if (buf_ptr == 2) {
                             send_data[len++] = strtol(read_buf, NULL, 16);
                             buf_ptr = 0;
+                            if (len >= sizeof(send_data))
+                                goto SEND_DATA;
                         }
                         
                         // skip white space
@@ -157,6 +159,8 @@ int main(int argc, char **argv)
                     read_buf[buf_ptr++] = read_data;
                     read_buf[buf_ptr] = '\0';
                     if (buf_ptr == 2) {
+                        if (len >= sizeof(send_data))
+                            goto SEND_DATA;
                         send_data[len++] = strtol(read_buf, NULL, 16);
                         buf_ptr = 0;
                     }
